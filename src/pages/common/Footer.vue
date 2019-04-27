@@ -1,7 +1,14 @@
 <template>
     <!--底部-->
     <div>
-        <ul class="footer">
+        <van-tabbar v-model="active" :replace="true">
+            <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
+            <van-tabbar-item icon="search" to="/category" dot>分类</van-tabbar-item>
+            <van-tabbar-item icon="friends-o" info="5">购物车</van-tabbar-item>
+            <van-tabbar-item icon="setting-o" info="20">个人中心</van-tabbar-item>
+        </van-tabbar>
+<!--      原始写法
+  <ul class="footer">
             <router-link
                     tag="li"
                     class="footer-item"
@@ -18,18 +25,27 @@
             </router-link>
             <li class="footer-item">购物车</li>
             <li class="footer-item">个人中心</li>
-        </ul>
+        </ul>-->
     </div>
 </template>
 
 <script>
 export default {
-    name: 'commonFooter'
+    name: 'CommonFooter',
+    props: {
+        footerActive: Number
+    },
+    data() {
+        return {
+            /* 配合Tabbar 标签栏确定footer图标高亮 */
+            active: this.footerActive
+        }
+    }
 }
 </script>
 
 <style lang="scss">
-    .footer{
+/*    .footer{
         display: flex;
         position: absolute;
         bottom: 0px;
@@ -41,5 +57,5 @@ export default {
             flex: 1;
             text-align: center;
         }
-    }
+    }*/
 </style>
