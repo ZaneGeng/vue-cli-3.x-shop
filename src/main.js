@@ -7,9 +7,14 @@ import store from './store'
 import '@/assets/style/base.css'
 /* 设定基础font-size值，供rem使用 */
 import '@/assets/js/rem.js'
+/* 轮播插件vue-awesome-swiper */
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 /* 引入vant前端组件库 按需引入*/
-import { Button, Icon, NavBar, Tabbar, TabbarItem  } from 'vant';
-Vue.use(Button).use(Icon).use(NavBar).use(Tabbar).use(TabbarItem);
+import { Button, Icon, NavBar, Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload   } from 'vant';
+
+Vue.use(Button).use(Icon).use(NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload);
+Vue.use(VueAwesomeSwiper)/* 轮播插件vue-awesome-swiper */
 
 Vue.config.productionTip = false
 

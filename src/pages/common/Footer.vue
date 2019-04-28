@@ -7,25 +7,6 @@
             <van-tabbar-item icon="friends-o" info="5">购物车</van-tabbar-item>
             <van-tabbar-item icon="setting-o" info="20">个人中心</van-tabbar-item>
         </van-tabbar>
-<!--      原始写法
-  <ul class="footer">
-            <router-link
-                    tag="li"
-                    class="footer-item"
-                    :to="'/'"
-            >
-                首页
-            </router-link>
-            <router-link
-                    tag="li"
-                    to="/category"
-                    class="footer-item"
-            >
-               分类
-            </router-link>
-            <li class="footer-item">购物车</li>
-            <li class="footer-item">个人中心</li>
-        </ul>-->
     </div>
 </template>
 
@@ -44,7 +25,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /*    .footer{
         display: flex;
         position: absolute;
