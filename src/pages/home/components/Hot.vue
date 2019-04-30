@@ -8,7 +8,7 @@
             v-if="hotList.length>0"
             class="swiper"
     >
-      <swiper-slide v-for="(item,index) of hotList" :key="index">
+      <swiper-slide v-for="(item,index) of hotList" :key="index" >
         <div class="swiper-slide">
           <img class="img" :src="item.imgUrl" />
           <p class="p">{{item.content}}</p>
@@ -58,16 +58,20 @@ export default {
 
 <style lang="scss" scoped>
 .hot{
+  box-sizing: border-box;
   width: 100%;
   overflow: hidden;
   height: 0;
-  padding-bottom: 95%;
+  padding-bottom: 90%;
   margin-top:.3rem;
   background: white;
+  padding-left:1%;
+  padding-right:1%;
 
   &-title{
     width:100%;
     height: .6rem;
+    font-size: .25rem;
     line-height: .6rem;
     padding-left: .2rem;
 

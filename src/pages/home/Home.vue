@@ -15,6 +15,10 @@
         <div class="hot">
             <home-hot :hotList="hotList"></home-hot>
         </div>
+        <!--推荐-->
+        <div class="recommend">
+            <home-recommend :recommend="recommend"></home-recommend>
+        </div>
         <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
         <!--底部-->
         <div class="footer">
@@ -30,6 +34,7 @@ import CommonHeader from "../common/Header";
 import HomeSwiper from "./components/Swiper";
 import HomeIcons from "./components/Icons";
 import HomeHot from "./components/Hot";
+import HomeRecommend from "./components/Recommend";
 
 export default {
     name: 'Home',
@@ -42,10 +47,12 @@ export default {
             /* icons导航数据，数组类型[] */
             iconList: [],
             /* 热门推荐数据，数组类型[] */
-            hotList:[]
+            hotList:[],
+            /*推荐*/
+            recommend:[]
         }
     },
-    components: {HomeHot, HomeIcons, HomeSwiper, CommonHeader, CommonFooter},
+    components: {HomeRecommend, HomeHot, HomeIcons, HomeSwiper, CommonHeader, CommonFooter},
     methods: {
         getHomeInfo () {
             axios.get('/api/index.json')
@@ -58,6 +65,8 @@ export default {
                         this.iconList = res.data.iconList
                         /* 热门推荐数据，数组类型[] */
                         this.hotList = res.data.recommendList
+                        /* 推荐数据，数组类型[] */
+                        this.recommend = res.data.weekendList
                         console.log(res.data.swiperList)
                     }
                 })
