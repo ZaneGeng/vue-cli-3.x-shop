@@ -10,10 +10,10 @@ import '@/assets/js/rem.js'
 /* 轮播插件vue-awesome-swiper */
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
-/* 引入vant前端组件库 按需引入*/
-import { Button, Icon, NavBar, Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload   } from 'vant';
+/* 引入vant前端组件库 按需引入1/2*/
+import { Button, Icon, NavBar, Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload,Tab,Tabs,Field,CellGroup,Toast} from 'vant';
 
-Vue.use(Button).use(Icon).use(NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload);
+Vue.use(Button).use(Icon).use(NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload).use(Tab).use(Tabs).use(Field).use(CellGroup).use(Toast);/* 启用vant前端组件库2/2 */
 Vue.use(VueAwesomeSwiper)/* 轮播插件vue-awesome-swiper */
 
 Vue.config.productionTip = false

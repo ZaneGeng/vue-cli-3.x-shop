@@ -15,6 +15,11 @@ export default new Router({
             path: '/category',
             name: '分类',
             component: () => import('@/pages/category/Category.vue')
+        },
+        {
+            path: '/regist',
+            name: '注册',
+            component: () => import('@/pages/regist_login/Regist.vue')
         }
     ],
 

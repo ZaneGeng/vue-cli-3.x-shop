@@ -78,7 +78,7 @@ html {
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
   /* 1 */
-  font-size: 62.5%;
+  font-size: 92.5%;
   /* 10/16=62.5% */
 }
 
@@ -505,14 +505,7 @@ option:disabled:checked {
   color: #d2d2d2;
 }
 
-/**
-* 修正 Safari 3+, Chrome 1+ Placeholder 居中问题
-*/
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input {
-    line-height: normal !important;
-  }
-}
+
 
 /**
 * 修正 Firefox 19+ Placeholder 设置了opacity 的问题

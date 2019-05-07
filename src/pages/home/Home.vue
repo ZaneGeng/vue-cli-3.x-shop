@@ -35,6 +35,7 @@ import HomeSwiper from "./components/Swiper";
 import HomeIcons from "./components/Icons";
 import HomeHot from "./components/Hot";
 import HomeRecommend from "./components/Recommend";
+import URL from "../../service.config.js";
 
 export default {
     name: 'Home',
@@ -55,7 +56,8 @@ export default {
     components: {HomeRecommend, HomeHot, HomeIcons, HomeSwiper, CommonHeader, CommonFooter},
     methods: {
         getHomeInfo () {
-            axios.get('/api/index.json')
+            // axios.get('/api/index.json')
+            axios.get(URL.getIndexInfo)
                 .then((response) => {
                     let res = response.data
                     if (res.ret && res.data != null) {
@@ -77,6 +79,7 @@ export default {
     },
     /* vue实例生命周期，页面渲染输出后执行 */
     mounted () {
+        console.log(URL.getIndexInfo);
         this.getHomeInfo()
     },
 }
