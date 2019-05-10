@@ -19,7 +19,7 @@ export default new Router({
         {
             path: '/regist',
             name: '注册',
-            component: () => import('@/pages/regist_login/Regist.vue')
+            component: () => import('@/pages/regist_login/Regist_Login.vue')
         }
     ],
 

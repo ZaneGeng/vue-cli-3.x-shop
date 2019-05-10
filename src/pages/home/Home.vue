@@ -2,7 +2,7 @@
 <template>
     <div class="home">
         <!--顶部-->
-        <common-header></common-header>
+        <common-header :memberInfo="memberInfo"></common-header>
         <!--轮播图-->
         <div class="swiper">
             <home-swiper :swiperList="swiperList"></home-swiper>
@@ -36,6 +36,7 @@ import HomeIcons from "./components/Icons";
 import HomeHot from "./components/Hot";
 import HomeRecommend from "./components/Recommend";
 import URL from "../../service.config.js";
+import {mapState} from 'vuex'
 
 export default {
     name: 'Home',
@@ -77,10 +78,16 @@ export default {
                 })
         }
     },
+    computed:{
+        //获取vuex登陆用户信息
+        ...mapState(['memberInfo'])
+    },
     /* vue实例生命周期，页面渲染输出后执行 */
     mounted () {
-        console.log(URL.getIndexInfo);
+        // 获取页面数据
         this.getHomeInfo()
+
+
     },
 }
 </script>

@@ -3,14 +3,17 @@
     <div>
         <!--“NavBar导航栏“插件-->
         <van-nav-bar title="标题" left-text="返回" left-arrow :fixed="true" :z-index='99'>
-            <van-icon name="cart" slot="right" />
+            <van-icon slot="right" @click="$router.push('/regist')" > {{memberInfo.phone}}</van-icon>
         </van-nav-bar>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'CommonHeader'
+        name: 'CommonHeader',
+        props:{
+            memberInfo:Object
+        }
     }
 </script>
 
