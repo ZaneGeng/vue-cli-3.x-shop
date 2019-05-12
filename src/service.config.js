@@ -3,7 +3,7 @@
 /*mock地址*/
 const MOCKURL='http://localhost:8080/mock/';
 
-/*实际服务端地址*/
+/*实际服务端地址，生产环境置空*/
 const SERVERURL ='http://localhost';
 
 /*会员服务url*/
