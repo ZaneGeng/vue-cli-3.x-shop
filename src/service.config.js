@@ -1,7 +1,7 @@
 /*========路由=========*/
 
 /*mock地址*/
-const MOCKURL='http://localhost:8080/mock/';
+const MOCKURL='http://192.168.4.10:8080/mock/';
 
 /*实际服务端地址*/
 const SERVERURL ='http://localhost';
@@ -12,8 +12,15 @@ const MEMBER_SERVICE_URL = SERVERURL+'/api-member/'
 
 /*调用地址*/
 const URL= {
-    /*mock地址*/
+
+    /*=================【mock测试地址】======================*/
+
+    /*mock首页地址*/
     getIndexInfo: MOCKURL + 'index.json',
+
+    /*mock产品分类地址*/
+    getCategoryInfo: MOCKURL + 'category.json',
+
 
     /*=================【会员服务】======================*/
 
