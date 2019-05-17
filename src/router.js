@@ -20,7 +20,18 @@ export default new Router({
             path: '/regist',
             name: '注册',
             component: () => import('@/pages/regist_login/Regist_Login.vue')
+        },
+        {
+            path: '/detail/:id',
+            name: 'detail',
+            component: () => import('@/pages/detail/Detail.vue')
+        },
+        {
+            path: '/cart',
+            name: '购物车',
+            component: () => import('@/pages/cart/Cart.vue')
         }
+
     ],
 
 })

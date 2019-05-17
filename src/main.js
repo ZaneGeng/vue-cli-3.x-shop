@@ -11,9 +11,9 @@ import '@/assets/js/rem.js'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 /* 引入vant前端组件库 按需引入1/2*/
-import { Button, Icon, NavBar, Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload,Tab,Tabs,Field,CellGroup,Toast, Row, Col, Badge, BadgeGroup,List,PullRefresh} from 'vant';
+import { Button, Icon, NavBar, Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload,Tab,Tabs,Field,CellGroup,Toast, Row, Col, Badge, BadgeGroup,List,PullRefresh, GoodsAction,GoodsActionBigBtn,GoodsActionMiniBtn,Card,SubmitBar  } from 'vant';
 
-Vue.use(Button).use(Icon).use(NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload).use(Tab).use(Tabs).use(Field).use(CellGroup).use(Toast).use(Row).use(Col).use(Badge).use(BadgeGroup).use(List).use(PullRefresh);/* 启用vant前端组件库2/2 */
+Vue.use(Button).use(Icon).use(NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload).use(Tab).use(Tabs).use(Field).use(CellGroup).use(Toast).use(Row).use(Col).use(Badge).use(BadgeGroup).use(List).use(PullRefresh).use(GoodsAction).use(GoodsActionBigBtn).use(GoodsActionMiniBtn).use(Card).use(SubmitBar);/* 启用vant前端组件库2/2 */
 Vue.use(VueAwesomeSwiper)/* 轮播插件vue-awesome-swiper */
 
 Vue.config.productionTip = false

@@ -2,7 +2,7 @@
 <template>
     <div>
         <!--頂部-->
-        <van-nav-bar  title="产品分类"  />
+        <van-nav-bar  title="产品分类" left-text="返回"  @click-left="onClickLeft"  />
 
         <!--分类-->
         <div class="category">
@@ -16,7 +16,7 @@
                         <van-badge title="标签名称" info="99" />
                         <van-badge title="标签名称" info="99+" />-->
                         <!--正式循环-->
-                        <van-badge v-for="item of categoryNavList" :key="item.id" :title="item.title" :info="item.info" @click="clickNameHandler(item.id)" />
+                        <van-badge v-for="item of categoryNavList" :key="item.id" :title="item.title" :info="item.info" @click="clickNavHandler(item.id)" />
 
                     </van-badge-group>
                 </van-col>
@@ -34,9 +34,9 @@
                            <div >
                                <ul>
                                    <li class="container-item" v-for="item of productList" :key="item.id">
-                                       <van-row  type="flex" >
-                                           <van-col class="vanImg" span="15">
-                                               <img :src="item.imgUrl" />
+                                       <van-row  type="flex" tag="div" >
+                                           <van-col class="vanImg" span="15" >
+                                               <img :src="item.imgUrl"  @click="clickDetailHandler(item.id)" />
                                            </van-col>
                                            <van-col class="vanTitle" span="9">{{item.content}}</van-col>
                                        </van-row>
@@ -82,12 +82,16 @@ export default {
     },
     components: {CommonFooter},
     methods:{
+        /*返回*/
+        onClickLeft(){
+            this.$router.go(-1);
+        },
         onChangeBadge(key) {
             this.activeKey = key;
 
         },
         /*点击导航事件*/
-        clickNameHandler(typeId){
+        clickNavHandler(typeId){
             // console.log( this.categoryNavList);
            // this.getProductList(typeId);
             this.productList=[];/*置空数据*/
@@ -128,6 +132,12 @@ export default {
                     console.error(error)
                 })
 
+        },
+        /*点击产品，进入详情页*/
+        clickDetailHandler(id){
+            // console.log(id);
+            /*路由跳轉*/
+            this.$router.push(`/detail/${id}`);
         }
     },
     mounted () {
