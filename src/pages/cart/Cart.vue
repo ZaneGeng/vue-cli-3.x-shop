@@ -7,7 +7,7 @@
         <div class="cardList">
 
             <van-card
-                    v-for="item of productList"
+                    v-for="(item,index) of productList"
                     :key="item.id"
                     num="2"
                     tag="标签"
@@ -19,14 +19,15 @@
             >
                 <div slot="footer">
                     <van-button size="mini">按钮</van-button>
-                    <van-button size="mini">删除</van-button>
+                    <van-button size="mini" @click="deleteHandler(item.id,index)">删除</van-button>
                 </div>
             </van-card>
 
 
+            总数量：{{totalCount}}
+            <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+            <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 
-            <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
-            <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
             <div class="submit">
                 <van-submit-bar
                         :price="totalPrice"
@@ -59,15 +60,30 @@ export default {
         /*提交*/
         onSubmit(){
             alert("提交");
+        },
+        /*删除*/
+        deleteHandler(id,index){
+            this.productList.splice(index,1);
+            this.$notify({
+                message: '删除成功',
+                duration: 1000,
+                background: '#1989fa'
+            })
+            //数据库操作，略
         }
     },
     /*计算属性，自动计算总金额，默认显示的是分*/
     computed:{
+        /*总金额*/
         totalPrice(){
             return this.productList.reduce((sum,item)=>{
                 sum+=item.money;
                 return sum;
             },0) *100;/*SubmitBar默认显示的金额是分，所以元=分*100*/
+        },
+        /*总数量*/
+        totalCount(){
+            return this.productList.length;
         }
     },
     created(){

@@ -61,6 +61,9 @@ export default {
         /*点击购物车*/
         onClickMiniBtn(){
             this.$router.push("/cart");
+        },
+        onClickBigBtn(){
+
         }
     },
 
@@ -79,7 +82,8 @@ export default {
             })
             .catch(function (error) {
                 console.error(error)
-            })
+            });
+
     }
 }
 </script>

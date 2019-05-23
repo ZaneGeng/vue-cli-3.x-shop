@@ -140,7 +140,7 @@ export default {
             this.$router.push(`/detail/${id}`);
         }
     },
-    mounted () {
+    created () {
         /*获取类别导航list*/
         axios.get(URL.getCategoryInfo)
             .then((response) => {
