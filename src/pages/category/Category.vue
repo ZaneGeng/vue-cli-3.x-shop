@@ -148,19 +148,13 @@ export default {
                 if (res.ret && res.data != null) {
                     /* 类别导航数据 */
                     this.categoryNavList = res.data.categoryNavList
-                    //     /* icons导航数据，数组类型[] */
-                    //     this.iconList = res.data.iconList
-                    //     /* 热门推荐数据，数组类型[] */
-                    //     this.hotList = res.data.recommendList
-                    //     /* 推荐数据，数组类型[] */
-                    //     this.recommend = res.data.weekendList
-                    //     console.log(res.data.swiperList)
                 }
             })
             .catch(function (error) {
                 console.error(error)
             })
-    }
+    },
+
 }
 </script>
 

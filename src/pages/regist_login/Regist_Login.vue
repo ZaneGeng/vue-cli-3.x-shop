@@ -56,6 +56,8 @@ export default {
     components: { CommonFooter },
     data () {
         return {
+            /*登录后返回地址，比如进入分类页，跳转到登录，登录后跳转回登录页*/
+            prePath:'',
 
             username:'',
             password:'',
@@ -69,6 +71,26 @@ export default {
     methods:{
         ...mapMutations(['changeLogin']),
         registHandler () {
+
+            //模拟直接登录
+            //提醒
+            this.$toast.success("登陆成功！");
+            //用户信息存入vuex
+            this.$store.commit("setToken","aaabbbccddd");
+            // this.changeLogin(res.data.data);
+            //用户信息存入localstorage
+            localStorage.setItem("token","aaabbbccddd");
+            console.log(localStorage.getItem("token"));
+            //跳转
+            if(this.prePath){
+                //跳转回上个页面
+                this.$router.push(this.prePath);
+            }else{
+                //跳转回首页
+                this.$router.push("/");
+            }
+
+
             this.$toast.loading({
                 mask: true,
                 message: '加载中...'
@@ -83,9 +105,17 @@ export default {
                         //提醒
                         this.$toast.success("登陆成功！");
                         //用户信息存入vuex
-                        this.changeLogin(res.data.data);
+                        this.$store.commit("changeLogin",res.data.data);
+                        // this.changeLogin(res.data.data);
                         //跳转
-                        this.$router.push("/");
+                        if(this.prePath){
+                            //跳转回上个页面
+                            this.$router.push("/"+this.prePath);
+                        }else{
+                            //跳转回首页
+                            this.$router.push("/");
+                        }
+
                     },1000);
 
                 }else{
@@ -103,6 +133,11 @@ export default {
             //
             //     })
         }
+    },
+    created(){
+        /*从router.js导航守卫跳转过来传递的参数*/
+        this.prePath=this.$route.query.redirect;
+
     }
 }
 </script>

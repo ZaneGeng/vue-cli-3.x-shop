@@ -3,7 +3,7 @@
     <div>
         <!--“NavBar导航栏“插件-->
         <van-nav-bar title="标题" left-text="返回" left-arrow :fixed="true" :z-index='99'>
-            <van-icon slot="right" @click="$router.push('/regist')" > {{JSON.stringify(memberInfo.phone)==='{}' ? '未登录': memberInfo.phone}}</van-icon>
+            <van-icon slot="right" @click="$router.push('/regist')" > {{JSON.stringify(token)==='{}' ? '未登录': token}}</van-icon>
         </van-nav-bar>
     </div>
 </template>
@@ -12,7 +12,7 @@
     export default {
         name: 'CommonHeader',
         props:{
-            memberInfo:Object
+            token:String
         }
     }
 </script>

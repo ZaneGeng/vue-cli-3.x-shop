@@ -2,7 +2,7 @@
 <template>
     <div class="home">
         <!--顶部-->
-        <common-header :memberInfo="memberInfo"></common-header>
+        <common-header :token="token"></common-header>
         <!--轮播图-->
         <div class="swiper">
             <home-swiper :swiperList="swiperList"></home-swiper>
@@ -80,7 +80,7 @@ export default {
     },
     computed:{
         //获取vuex登陆用户信息
-        ...mapState(['memberInfo'])
+        ...mapState(['token'])
     },
     /* vue实例生命周期，页面渲染输出后执行 */
     mounted () {
