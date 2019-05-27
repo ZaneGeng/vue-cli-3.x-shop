@@ -25,13 +25,13 @@
                 />
                 <van-goods-action-mini-btn
                         icon="cart-o"
-                        info="5"
+                       :info="this.$store.getters.cartCountSum"
                         text="购物车"
                         @click="onClickMiniBtn"
                 />
                 <van-goods-action-big-btn
                         text="加入购物车"
-                        @click="onClickBigBtn"
+                        @click="addCart(productDetail)"
                 />
                 <van-goods-action-big-btn
                         primary
@@ -39,6 +39,7 @@
                         @click="onClickBigBtn"
                 />
             </van-goods-action>
+
         </div>
     </div>
 </template>
@@ -62,21 +63,44 @@ export default {
         onClickMiniBtn(){
             this.$router.push("/cart");
         },
+        /*加入购物车*/
+        addCart(productDetail){
+
+            //产品对象{}存入vuex
+            this.$store.commit("addCart",productDetail);
+
+            //提醒
+            this.$notify({
+                message: '购物车添加成功',
+                duration: 1000,
+                background: '#1989fa'
+            });
+
+        },
         onClickBigBtn(){
 
         }
     },
+    computed:{
 
+    },
     created(){
         console.log(this.$route.params.id);
         /*获取产品详情，用index.json凑合使用*/
         axios.get(URL.getIndexInfo)
             .then((response) => {
                 let res = response.data
+                console.log("产品："+res);
                 if (res.ret && res.data.recommendList.length != 0) {
                     /* 产品对象，对象类型{} */
-                    this.productDetail =res.data.recommendList[0];
-                    console.log(this.productDetail);
+                    res.data.recommendList.forEach((item,index)=>{
+                        if(item.id==this.$route.params.id){
+                            this.productDetail =res.data.recommendList[index];
+                            // console.log( res.data.recommendList[index]);
+                        }
+                    })
+                    // this.productDetail =res.data.recommendList[0];
+                    // console.log(this.productDetail);
 
                 }
             })

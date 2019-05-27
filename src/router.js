@@ -80,6 +80,7 @@ router.beforeEach((to, from, next) => {
 
     // 判断该路由是否需要登录权限，在router.js设置
     const token=store.state.token;
+    console.log("token:"+token);
     if (to.meta.requireAuth) {
 
         if (token) {

@@ -4,7 +4,11 @@
         <van-tabbar v-model="active" :replace="true">
             <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
             <van-tabbar-item icon="search" to="/category" dot>分类</van-tabbar-item>
-            <van-tabbar-item icon="friends-o" info="5">购物车</van-tabbar-item>
+            <van-tabbar-item
+                    icon="friends-o"
+                    :info="this.$store.getters.cartCountSum>0 ? this.$store.getters.cartCountSum : null  "
+                    to="/cart"
+            >购物车</van-tabbar-item>
             <van-tabbar-item icon="setting-o" info="20" to="/regist">个人中心</van-tabbar-item>
         </van-tabbar>
     </div>

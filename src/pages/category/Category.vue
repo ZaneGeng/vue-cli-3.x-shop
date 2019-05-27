@@ -99,12 +99,12 @@ export default {
         },
         /*加载数据,滚动条与底部距离小于 offset 时触发（异步加载，自动支持分页查询）*/
         onLoadProductListMore(){
-            alert("读取数据库分页获取产品数据");
+            // alert("读取数据库分页获取产品数据");
             this.loading = true;/*显示加载*/
             this.getProductList(0);
            },
         onRefresh() {
-            alert("下拉刷新获取数据");
+            // alert("下拉刷新获取数据");
             this.refreshLoading=true;/*显示加载提醒*/
             this.productList=[];/*置空数据*/
             this.getProductList(0);

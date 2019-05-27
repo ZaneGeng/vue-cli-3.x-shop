@@ -13,6 +13,8 @@ export default function setaixos() {
         // 判断是否存在token，如果存在的话，则每个http header都加上token
         if (token) {
             config.headers.Authorization =token;
+        }else{
+            config.headers.Authorization ="rrttyyuu6654";
         }
 
         return config;
@@ -25,8 +27,8 @@ export default function setaixos() {
     axios.interceptors.response.use(response=> {
         // 对响应数据做处理
         console.log("输出status："+response.status);
-        console.log("输出："+response.data.data.swiperList);
-        console.log("输出data："+response.data.ret);
+        //console.log("输出："+response.data.data.swiperList);
+        //console.log("输出data："+response.data.ret);
         //检查登录状态，token是否过期
 
         //跳转到登录页面

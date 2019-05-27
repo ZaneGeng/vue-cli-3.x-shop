@@ -91,47 +91,46 @@ export default {
             }
 
 
-            this.$toast.loading({
-                mask: true,
-                message: '加载中...'
-            });
-            axios({
-                url:URL.getMemberByPhone+ this.username   ,
-                method: 'get'
-            }).then(res=>{
-                //登录成功
-                if(res.data.code==200){
-                    setTimeout(()=>{
-                        //提醒
-                        this.$toast.success("登陆成功！");
-                        //用户信息存入vuex
-                        this.$store.commit("changeLogin",res.data.data);
-                        // this.changeLogin(res.data.data);
-                        //跳转
-                        if(this.prePath){
-                            //跳转回上个页面
-                            this.$router.push("/"+this.prePath);
-                        }else{
-                            //跳转回首页
-                            this.$router.push("/");
-                        }
-
-                    },1000);
-
-                }else{
-                    //登陆失败
-                    this.$toast.fail(res.data.msg);
-                }
-
-            }).catch(err=>{
-                console.log(err);
-            })
-            // axios.get('http://localhost:5300/getMemberByPhone/'+ this.username)
-            //     .then((response) => {
+            // this.$toast.loading({
+            //     mask: true,
+            //     message: '登录中...'
+            // });
+            // axios({
+            //     url:URL.getMemberByPhone+ this.username,
+            //     method: 'get'
+            // }).then(res=>{
+            //     //登录成功
+            //     if(res.data.code==200){
             //
-            //             console.log(response)
+            //         setTimeout(()=>{
+            //             //清除提醒
+            //             this.$toast.clear();
+            //             //用户信息存入vuex
+            //             this.$store.commit("setToken","aaabbbccddd");
+            //             //用户信息存入localstorage
+            //             localStorage.setItem("token","eeeaaabbbccddd");
+            //             // console.log(localStorage.getItem("token"));
+            //             //跳转
+            //             if(this.prePath){
+            //                 //跳转回上个页面
+            //                 this.$router.push(this.prePath);
+            //             }else{
+            //                 //跳转回首页
+            //                 this.$router.push("/");
+            //             }
             //
-            //     })
+            //         },1000);
+            //
+            //     }else{
+            //         //登陆失败
+            //         this.$toast.clear(); //清除提醒
+            //         this.$notify(res.data.msg);
+            //     }
+            //
+            // }).catch(err=>{
+            //     this.$notify(err);
+            // })
+
         }
     },
     created(){
