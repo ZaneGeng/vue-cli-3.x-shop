@@ -1,8 +1,9 @@
 <!--注册和登录-->
 <template>
     <div id="wrap">
-        <!--tabs滑框-->
-        <van-tabs v-model="active" swipeable :line-width="150" color="#1989FA">
+
+        <!--tabs滑框，登录页-->
+        <van-tabs v-model="active" swipeable :line-width="150" color="#1989FA" v-if="this.$store.state.token==''">
             <van-tab title="登录" class="login">
                 <!--tab表单-->
                 <van-cell-group>
@@ -38,6 +39,14 @@
 
         </van-tabs>
 
+        <div class="logout" v-if="this.$store.state.token!=''">
+            <ul>
+                <li v-for="(item,index) of center" :key="index" @click="clickHandler(item)">
+                    <van-button type="info"> {{item.lable}}</van-button>
+                    <br /> <br />
+                </li>
+            </ul>
+        </div>
         <!--底部-->
         <div class="footer">
            <common-footer :footerActive="footerActive"></common-footer>
@@ -65,7 +74,28 @@ export default {
             /* 配合Tabbar 标签栏确定footer图标高亮 */
             footerActive: 3,
             /* 配合van-tabs显示第几个 */
-            active: 0
+            active: 0,
+
+            /*个人中心列表*/
+            center:[
+                {
+                    lable:'商品收藏',
+                    url:''
+                },
+                {
+                    lable:'我的足迹',
+                    url:''
+                },
+                {
+                    lable:'我的订单',
+                    url:''
+                },
+                {
+                    lable:'退出登录',
+                    url:'',
+                    type:'logout'
+                }
+            ]
         }
     },
     methods:{
@@ -131,6 +161,22 @@ export default {
             //     this.$notify(err);
             // })
 
+        },
+
+        /*点击个人中心*/
+        clickHandler(item){
+
+            /*点击注销*/
+            if(item.type=='logout'){
+
+                //1、删除vuex的token
+                this.$store.commit("setToken",'');
+                //2、删除localStorage的token
+                localStorage.removeItem("token");
+                //3、传给后端注销操作（略）
+                //4、跳转页面
+                this.$router.push("/");
+            }
         }
     },
     created(){
@@ -174,6 +220,14 @@ export default {
     /*tab导航*/
     /deep/ .van-ellipsis{
         font-size .27rem;
+    }
+
+    .logout{
+        width:100%;
+        height:1rem;
+        text-align center;
+        margin-top:1rem
+
     }
 
 

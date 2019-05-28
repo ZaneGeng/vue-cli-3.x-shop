@@ -28,6 +28,8 @@ let store= new Vuex.Store({
       //获取到的参数status应该就是用户对象，直接赋格state仓库中的memberInfo对象
       state.memberInfo=user;
     },
+
+    /*设置token*/
     setToken(state,token){
       state.token=token;
     },

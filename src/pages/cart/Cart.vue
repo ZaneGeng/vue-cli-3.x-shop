@@ -5,7 +5,8 @@
         <van-nav-bar  title="购物车" left-text="返回"  @click-left="onClickLeft" left-arrow fixed />
 
         <div class="cardList">
-
+            全选/不选 ：<input type="checkbox"    @click="selectAll" :checked="checkItem.length==productList.length" />
+            <p style="color:red">这里没有做复选框对于金额的操作，如果需要复选框需要进行修改。参考：https://v.youku.com/v_show/id_XMzAwOTY4MTg5Mg==.html?refer=seo_operation.liuxiao.liux_00003303_3000_Qzu6ve_19042900</p>
             <van-card
                     v-for="(item,index) of productList"
                     :key="item.id"
@@ -16,15 +17,22 @@
                     :thumb="item.imgUrl"
                     origin-price="10.00"
             >
+
                 <div slot="footer">
-                    <van-button size="mini"  @click="addNum(index)"><span class="iconfont">&#xeaf3;</span> </van-button><!--加号，传入vuex中购物车cart数组的序号-->
-                    <input class="cartNum" type="text" :value="item.count" /><!--数量-->
-                    <van-button size="mini" @click="reduceNum(index)"><span class="iconfont">&#xeaf5;</span> </van-button><!--减号-->
+                    <!--复选框-->
+                    <input type="checkbox" class="check" name="vehicle" :value="item"  v-model="checkItem" />
+                    <!--加号，传入vuex中购物车cart数组的序号-->
+                    <van-button size="mini"  @click="addNum(index)"><span class="iconfont">&#xeaf3;</span> </van-button>
+                    <!--数量-->
+                    <input class="cartNum" type="text" :value="item.count" />
+                    <!--减号-->
+                    <van-button size="mini" @click="reduceNum(index)"><span class="iconfont">&#xeaf5;</span> </van-button>
+                    <!--删除-->
                     <van-button size="mini" @click="deleteHandler(item.id,index)">删除</van-button>
                 </div>
             </van-card>
 
-
+{{checkItem}}
             <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
             <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 
@@ -50,7 +58,9 @@ export default {
         return {
             imageURL:'http://img1.qunarzz.com/sight/p0/1501/f4/f467729126949c3a.water.jpg_140x140_ef235b1c.jpg',
             /*购物车列表，这个数组是所有操作的核心，都是再操作它*/
-            productList:[]
+            productList:[],
+            /*复选框选中数组，vue自带复选框写法*/
+            checkItem:[]
         }
     },
     methods:{
@@ -82,6 +92,21 @@ export default {
 
             //修改vuex中购物车cart的值
             this.$store.commit("reduceNum",index);
+        },
+        /*全选*/
+        selectAll(){
+            // if(this.checkItem.length>0){
+            if(!event.currentTarget.checked){
+                //取消全选
+                this.checkItem=[]
+            }else{
+                //全选
+                this.productList.forEach((item,index)=>{
+                    this.checkItem.push(item);
+                })
+                console.log(this.checkItem);
+            }
+
         }
     },
     /*计算属性，自动计算总金额，默认显示的是分*/
@@ -120,8 +145,11 @@ export default {
 .cart {
 
     .cardList {
+        box-sizing: border-box;
         overflow: hidden;
         margin-top: 1rem;
+        padding-left:.2rem;
+        position:relative;
 
 
         .cartNum {
@@ -132,6 +160,12 @@ export default {
             position: relative;
             left:0.05rem;
             top:-0.03rem;
+        }
+        .check{
+            width:1rem;
+            position:absolute;
+            left:-.5rem;
+            top:.7rem;
         }
     }
 
